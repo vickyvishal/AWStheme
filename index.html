@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>AppAchhi Compliant Appium Test Scripts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="vendor/prettify.css" rel="stylesheet" media="screen">
+  <link href="css/style.css" rel="stylesheet" media="screen, print">
+  <link href="img/favicon.ico" rel="icon" type="image/x-icon">
+  <script src="vendor/polyfill.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <header class="main-header">
+            <div class="logo-container">
+                <img src="https://pub.appachhi.net/img/logo.png" style="">
+            </div>
+        </header>
+        <div class="main-body row">
+            <section class="col-md-8 text-center">
+                <div id="main-col-body" class="text-left">
+                    <div class="">
+                        <h3 id="test-types-android-appium-java-testng-what-is">AppAcchi Compliant build tools</h3>
+                        <p>Use either Maven or Gradle as build tools for your appium test scripts.
+                        </p>
+                    </div>
+                    <div class="">
+                        <h3 id="test-types-android-appium-java-testng-version-information">Implement testng.xml
+                        </h3>
+                        <p>Make sure you have defined at least one testng.xml any where in your Appium test project zip. Testng.xml format can be found here
+                        </p>
+                    </div>
+                    <div class="">
+                        <h3>Capabillity parameters as command line arguments</h3>
+                        <p>Make sure all the set capability parameters used in your Appium test scripts are to be accepted as command line arguments. i.e., using the java command system.getProperty()</p>
+                        <p>define the desired capability for browser as<code>String broswser = System.getProperty(browser);</code>and then turn into desired capabilities afterwards:</p>
+                        <p><code>DesiredCapabilities desiredCapabilities = new DesiredCapabilities(); desiredCapability.setBrowserName(browser); mvn -Dbrowser="chrome" test</code> This will help us to control all the desired capabilities</p>
+                    </div>
+                    <div class="">
+                        <h3>Mandatory desired capabilities to be included</h3>
+                        <p>Some of the desired capabilities that should be defined without fail include:</p>
+                        <p>Native ANDROID/IOS App:</p>
+                        <ol>
+                            <li>UDID mobile_udid - (Ex: mobile_udid=CSDWUJ652JK)</li>
+                            <li>Appium URL appium_url - (Ex: appium_url=http://127.0.0.1:4723/wd/hub)</li>
+                            <li>App File Path App_file_path - (Ex: app_file_path=D:\User\myntra\vegasf\apks\myntra.apk)</li>
+                            <li>Screenshot path screenshot_path - (Ex: screenshot_path=D:\User\myntra\vegasf\screenshots)</li>
+                            <li>Environment environment - (Ex: environment=PROD/TEST/LIVE )</li>
+                            <li>Channel channel - ( Ex: ANDROID/IOS)</li>
+                            <li>Platform version ( device os verison ) platform_version - ( Ex: platform_version=6.0/7.1.1, etc.. )</li>
+                            <li>Device name device_name - ( Ex: device_name=Google Nexus 5s )</li>
+                        </ol>
+                        <p>ANDROID / IOS Mobile Web:</p>
+                        <ol>
+                            <li>UDID mobile_udid - ( Ex: mobile_udid=CSDWUJ652JK )</li>
+                            <li>Appium URL appium_url - ( Ex: appium_url=http://127.0.0.1:4723/wd/hub )</li>
+                            <li>Screenshot path screenshot_path - ( Ex: screenshot_path=D:\User\myntra\vegasf\screenshots )</li>
+                            <li>Browser Name browser - ( Ex: browser=Chrome )</li>
+                            <li>Channel channel - ( Ex: ANDROID_MWEB/IOS_MWEB)</li>
+                            <li>App Browser Url app_browser_url - ( Ex: app_browser_url=http://www.myntra.com )</li>
+                            <li>Environment environment - (Ex: environment=PROD/TEST/LIVE )</li>
+                        </ol>
+                        <p>Desktop Web</p>
+                        <ol>
+                            <li>App Url app_browser_url - (Ex: app_url=https://www.myntra.com)</li>
+                            <li>Screenshot Path screenshot_path - ( Ex: screenshot_path=D:\User\myntra\vegasf\screenshots )</li>
+                            <li>Browser Resolution browser_resolution_width - ( Ex: browser_resolution_width=1024 ) browser_resolution_height - ( Ex: browser_resolution_height=500 )</li>
+                            <li>Browser Version browser_version - ( Ex: browser_version=64.1 )</li>
+                            <li>Browser Binary File path browser_bin_path - ( Ex: browser_bin_path=D:\User\myntra\browsers\versions\chrome64.1.exe or /Applications/Chrome.app/MacOS/Contents/Google Chrome )</li>
+                            <li>Browser Web Driver Path browser_driver_path - ( Ex: browser_driver_path=D:\User\myntra\browsers\drivers\geckodriver.exe or /Applications/Chrome.app/drivers/geckodriver )</li>
+                            <li>Channel channel - ( Ex: DESKTOP_WEB)</li>
+                            <li>Environment environment - (Ex: environment=PROD/TEST/LIVE )</li>
+                        </ol>
+
+                        <div class="">
+                            <h3>Capability setting for installing app on device</h3>
+                            <p>For setting the capability to install app on a device, please use the below method instead of appPackage</p>
+                            <p>//name of the apk
+                                <code>File app = new File(System.getProperty(“app_file_path”));</code>
+                            </p>
+                            <p>//the absolute local path to the APK
+                                <code>capabilities.setCapability("app", app.getAbsolutePath());</code>
+                            </p>
+                        </div>
+                        <div class="">
+                            <h3>Implement assertions at the test level</h3>
+                            <p>suggestion is to Implement Assertions in the test level instead of page level with proper log messages. This will enable you to have rich test centric logs to debug in case of failure analysis.</p>
+                        </div>
+                    </div>
+                  </div>
+            </section>
+            <section class="right-nav col-md-4 text-center">
+                <div class="right-nav-container">
+                    <span class="text-left">On this page</span>
+                    <p>AppAcchi Compliant build tools</p>
+                    <p>Implement testng.xml</p>
+                    <p>Capabillity parameters as command line arguments</p>
+                    <p>Mandatory desired capabilities to be included</p>
+                    <p>Capability setting for installing app on device</p>
+                    <p>Implement assertions at the test level</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
